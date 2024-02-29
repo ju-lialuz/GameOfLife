@@ -11,6 +11,7 @@
 		78C756A12B8E4ADA00FDC9D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C756A02B8E4ADA00FDC9D0 /* ContentView.swift */; };
 		78C756A32B8E4ADB00FDC9D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78C756A22B8E4ADB00FDC9D0 /* Assets.xcassets */; };
 		78C756A62B8E4ADB00FDC9D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78C756A52B8E4ADB00FDC9D0 /* Preview Assets.xcassets */; };
+		78DE6A392B8FA7A6001A77C7 /* MatrizGameOfLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE6A382B8FA7A6001A77C7 /* MatrizGameOfLife.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		78C756A02B8E4ADA00FDC9D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78C756A22B8E4ADB00FDC9D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78C756A52B8E4ADB00FDC9D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		78DE6A382B8FA7A6001A77C7 /* MatrizGameOfLife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrizGameOfLife.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		78C7569D2B8E4ADA00FDC9D0 /* GameOfLife */ = {
 			isa = PBXGroup;
 			children = (
+				78DE6A382B8FA7A6001A77C7 /* MatrizGameOfLife.swift */,
 				78C7569E2B8E4ADA00FDC9D0 /* GameOfLifeApp.swift */,
 				78C756A02B8E4ADA00FDC9D0 /* ContentView.swift */,
 				78C756A22B8E4ADB00FDC9D0 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			files = (
 				78C756A12B8E4ADA00FDC9D0 /* ContentView.swift in Sources */,
 				78C7569F2B8E4ADA00FDC9D0 /* GameOfLifeApp.swift in Sources */,
+				78DE6A392B8FA7A6001A77C7 /* MatrizGameOfLife.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
