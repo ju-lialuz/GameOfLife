@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @State var matriz: [[Int]] = []
-//    @State var para: Bool = false
+    @State var isOn: Bool = false
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var body: some View {
         VStack{
             
@@ -19,29 +21,40 @@ struct ContentView: View {
                         Rectangle()
                             .frame(width: 30, height: 30)
                             .foregroundStyle(matriz[i][j] == 1 ? .pink : .gray)
+                            .onTapGesture {
+                                if matriz[i][j] == 0 {
+                                    matriz[i][j] = 1
+                                } else {
+                                    matriz[i][j] = 0
+                                }
+                            }
                     }
                 }
             }
             
             Button{
-                matriz = MatrizGameOfLife()
-                print(matriz)
+                isOn = true
             } label: {
-                Text("Matriz")
+                Text("Próxima geração")
+                    .foregroundStyle(.pink)
+            }.onReceive(timer){ _ in
+                if self.isOn {
+                    matriz = atualizaMatriz( matriz: matriz)
+                }
+
             }
             
             Button{
-                matriz = atualizaMatriz( matriz: matriz)
+                isOn = false
             } label: {
-                Text("Play")
+                Text("Pause")
+                    .foregroundStyle(.pink)
             }
+
         }
         .onAppear {
-            
-//            if !para{
-//                matriz = MatrizGameOfLife()
-//                para.toggle()
-//            }
+            matriz = MatrizGameOfLife()
+
             
         }
         

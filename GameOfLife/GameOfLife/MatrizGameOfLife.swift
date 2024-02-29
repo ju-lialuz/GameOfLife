@@ -11,9 +11,9 @@ func MatrizGameOfLife() -> [[Int]]{
     var matriz: [[Int]] = []
     var rows: [Int] = []
     
-    for _ in 0...4 {
-        for _ in 0...4 {
-            rows.append(Int.random(in: 0...1))
+    for _ in 0...7 {
+        for _ in 0...7 {
+            rows.append(0)
         }
         matriz.append(rows)
         rows.removeAll()
