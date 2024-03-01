@@ -7,64 +7,92 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     @State var matriz: [[Int]] = []
     @State var isOn: Bool = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        VStack{
-            
-            ForEach( matriz.indices, id:\.self ) { i in
-                HStack{
-                    ForEach( matriz.indices, id:\.self ){ j in
-                        Rectangle()
-                            .frame(width: 30, height: 30)
-                            .foregroundStyle(matriz[i][j] == 1 ? .pink : .gray)
-                            .onTapGesture {
-                                if matriz[i][j] == 0 {
-                                    matriz[i][j] = 1
-                                } else {
-                                    matriz[i][j] = 0
+        ZStack{
+            Rectangle()
+                .foregroundStyle(Color("Rosa"))
+            VStack(spacing: 10){
+                
+                Text("The Game of Love")
+                    .font(.system(size: 30))
+                    .bold()
+                    .padding(10)
+
+                ForEach( matriz.indices, id:\.self ) { i in
+                    HStack(spacing: 2){
+                        ForEach( matriz.indices, id:\.self ){ j in
+                            heart(color: matriz[i][j] == 1 ? .pink : .primary)
+                                .onTapGesture {
+                                    if matriz[i][j] == 0 {
+                                        matriz[i][j] = 1
+                                    } else {
+                                        matriz[i][j] = 0
+                                    }
                                 }
-                            }
+                        }
                     }
                 }
-            }
-            
-            Button{
-                isOn = true
-            } label: {
-                Text("Próxima geração")
-                    .foregroundStyle(.pink)
-            }.onReceive(timer){ _ in
-                if self.isOn {
-                    matriz = atualizaMatriz( matriz: matriz)
+                Button{
+                    isOn = true
+                } label: {
+                    Rectangle()
+                        .frame(width: 300, height: 50)
+                        .foregroundStyle(.black)
+                        .cornerRadius(50)
+                        .overlay{
+                            Text("GAME OF LIFE")
+                                .foregroundStyle(.gray)
+                                .font(.system(size: 30))
+                                .fontWeight(.bold)
+                        }
+                }.onReceive(timer){ _ in
+                    if self.isOn {
+                        matriz = atualizaMatriz( matriz: matriz)
+                    }
+                    
                 }
+                
+                .padding(20)
+                Button{
+                    isOn = false
+                } label: {
+                    Rectangle()
+                        .frame(width: 300, height: 50)
+                        .foregroundStyle(.black)
+                        .cornerRadius(50)
+                        .overlay{
+                            Text("PAUSE")
+                                .foregroundStyle(.gray)
+                                .font(.system(size: 30))
+                                .fontWeight(.bold)
 
+                        }
+                }
             }
-            
-            Button{
-                isOn = false
-            } label: {
-                Text("Pause")
-                    .foregroundStyle(.pink)
+            .onAppear {
+                matriz = MatrizGameOfLife()
             }
-
         }
-        .onAppear {
-            matriz = MatrizGameOfLife()
-
-            
-        }
-        
-        
+        .ignoresSafeArea()
     }
     
-    
+    func heart(color: Color) -> some View {
+        
+        Image(systemName: "heart.fill")
+            .font(.system(size: 25))
+            .foregroundStyle(color)
+        
+    }
 }
-    #Preview {
-        ContentView()
-    }
-    
-    
+
+
+#Preview {
+    ContentView()
+}

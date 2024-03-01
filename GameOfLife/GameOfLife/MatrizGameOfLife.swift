@@ -11,8 +11,8 @@ func MatrizGameOfLife() -> [[Int]]{
     var matriz: [[Int]] = []
     var rows: [Int] = []
     
-    for _ in 0...7 {
-        for _ in 0...7 {
+    for _ in 0...9 {
+        for _ in 0...9 {
             rows.append(0)
         }
         matriz.append(rows)
